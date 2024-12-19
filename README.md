@@ -1,10 +1,12 @@
-# i18n-enhancer
+<h1 align="center">i18n-enhancer</h1>
 
-> Make i18n 🌍 joyful 🤗 as it deserved to be!
+> Make internationalization 🌍 as joyful 🤗 as it's meant to be!
 
-An npm package **enhances** `react-i18next` and `i18next`, enhances the functionality of `useTranslate` by providing precise types, thus **hinting keys and interpolation variable names** within translated text, among other enhancements.
+An npm package **enhances** `react-i18next` and `i18next`.
 
-## Installation
+It enhances the function of `useTranslate` by providing precise types, thus make **keys and interpolation variable names** hinting possible in your IDE, among other enhancements.
+
+## Installation 📦
 
 ```bash
 npm install react-i18next i18next --save
@@ -12,7 +14,7 @@ npm install react-i18next i18next --save
 npm install react-i18next-enhancer --save
 ```
 
-## Usage
+## Usage 📝
 
 ### For `react-i18next`
 
@@ -79,12 +81,13 @@ const enhancer = enhance({
 
 ### 3. Use `useT` instead of `useTranslation` in your components
 
-> `useT` is type enhanced version of `useTranslation` with the type of your translated text as the key type.
+> `useT` is type enhanced version of `useTranslation` using your translated key as the input `key` type and translated value as return type.
 
 ```typescript
+const { useT } = enhancer;
+
 const Shopping: React.FC = () => {
-  const { useT } = enhancer;
-  const { t, i18n } = useT<ITranslationsEn>();
+  const { t, /*i18n*/ } = useT<ITranslationsEn>();
 
   // i18n.changeLanguage('en');
 
@@ -98,7 +101,15 @@ const Shopping: React.FC = () => {
 
 ### 4. Magic happens
 
+We use `useT` from `i18n-enhancer` instead of `useTranslation` from `react-i18next` and the magic happens.
+
+```diff
+- const { t } = useTranslation();
++ const { t } = useT<ITranslationsEn>();
+```
+
 假如我们的翻译文本如下：
+
 Suppose our translation text is as follows:
 
 ```typescript
@@ -108,7 +119,9 @@ Suppose our translation text is as follows:
   'shopping.orderSummaryText': 'Please review your order details below.',
   'shopping.总共': 'Total {{ total }} RMB',
 } as const
+```
 
+```typescript
 // zh
 {
   // 'shopping.去支付': '去支付', // we use `getLast` to extract text from key so no need to provide translation for Chinese. What a efficient way!
@@ -119,6 +132,10 @@ Suppose our translation text is as follows:
 
 当你输入 `t('shopping.` 你会看到所有翻译的 key 都会提示出来。
 
+When you type `t('shopping.` all translation keys will be prompted.
+
+![image](todo)
+
 并且如果你的光标悬浮到 `t` 函数上，你会看到如下提示：
 
 If you hover over the `t` function, you will see the following prompts:
@@ -128,7 +145,7 @@ t('shopping.去支付'): 'Checkout';
 t('shopping.orderSummaryText'): 'Please review your order details below.';
 ```
 
-**Yes it reflects the translation** instead of the just `string`! (Of course, `as const` must applied).
+**Yes it reflects the translated text** instead of just `string`! (Of course, `as const` must applied).
 
 How about the interpolation variables?
 
@@ -138,7 +155,7 @@ t('shopping.总共', { total: number }): 'Total {{ total }} RMB';
 
 Yes again the interpolation variables are hinted as well.
 
-**It is truly i18n type safe.**
+**It is truly i18n type safe 🛡️.**
 
 Certainly `<Shopping />` will rendered as expected:
 
