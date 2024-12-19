@@ -1,6 +1,29 @@
-import { useTranslation } from 'react-i18next';
-import rawI18n from '../../../test/locales/i18n';
-import type { FieldsDoubleBraces } from '../../utils';
+import type { FieldsDoubleBraces } from '../utils';
+
+type IParams = {
+  reactI18N: typeof import('react-i18next');
+  i18n: typeof import('i18next').default;
+};
+
+export function enhance({ reactI18N, i18n: rawI18n }: IParams) {
+  return {
+    useT: <T>() => useT<T>(reactI18N.useTranslation),
+
+    /**
+     * 类型加强后的 i18n 实例
+     */
+    i18n: {
+      ...rawI18n,
+      t: <T>(...args: IPowerfulTParameters<T>): IPowerfulTReturnType<T> => {
+        // @ts-expect-error
+        return rawI18n.t(...args);
+      },
+      isEnglish: rawI18n.resolvedLanguage?.includes('en'),
+    },
+  };
+}
+
+type IUseTranslation = typeof import('react-i18next')['useTranslation'];
 
 /**
  * 基于 react-i18next `useTranslation` 的封装，功能没有变化，做了强类型提示）：能自动提示 id，避免 id 写错。
@@ -8,7 +31,7 @@ import type { FieldsDoubleBraces } from '../../utils';
  * `t('common.action.title')` 因为嵌套暂不支持
  * @returns
  */
-export function useT<ITranslations>() {
+function useT<ITranslations>(useTranslation: IUseTranslation) {
   // 只需要import英文即可，反而可以检测出没有翻译的 key
   // type ITranslationsEn = typeof import('@/locales/en-US').default;
   // type ITranslationsZh = typeof import('@/locales/zh-CN').default;
@@ -55,11 +78,11 @@ type IPowerfulTReturnType<T> = ReturnType<IPowerfulTFunction<T>>;
 /**
  * 类型加强后的 i18n 实例
  */
-export const i18n = {
-  ...rawI18n,
-  t: <T>(...args: IPowerfulTParameters<T>): IPowerfulTReturnType<T> => {
-    // @ts-expect-error
-    return rawI18n.t(...args);
-  },
-  isEnglish: rawI18n.resolvedLanguage?.includes('en'),
-};
+// export const i18n = {
+//   ...rawI18n,
+//   t: <T>(...args: IPowerfulTParameters<T>): IPowerfulTReturnType<T> => {
+//     // @ts-expect-error
+//     return rawI18n.t(...args);
+//   },
+//   isEnglish: rawI18n.resolvedLanguage?.includes('en'),
+// };

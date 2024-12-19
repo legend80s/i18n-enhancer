@@ -1,14 +1,14 @@
 import React from 'react';
-
-import { useT } from '../../src/react-i18next/helper/i18n';
+import * as reactI18N from 'react-i18next';
 import { render } from '@testing-library/react';
+import { enhance } from '../../src/react-i18next';
+import i18n from './i18n';
 
-// const confirm = i18n.t('common.action.确认');
+const { useT } = enhance({
+  i18n,
+  reactI18N,
+});
 
-// console.log('confirm:', confirm);
-// 只需要import英文即可，反而可以检测出没有翻译的 key
-// 其次中文一般无需翻译，因为可以直接 key 中的中文
-// 故此处只import英文
 type ITranslationsEn = typeof import('./en').default;
 
 describe('i18n', () => {
@@ -26,7 +26,7 @@ describe('i18n', () => {
 
       expect(t('shopping.去支付')).toBe('去支付');
       expect(t('shopping.orderSummaryText')).toBe('请确认您的订单信息');
-      expect(t('shopping.总共')).toBe('总共');
+      expect(t('shopping.总共', { total: 100 })).toBe('总共 100 元');
 
       return <></>;
     };

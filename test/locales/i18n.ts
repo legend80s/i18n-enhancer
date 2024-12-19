@@ -1,9 +1,9 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import zhLocale from './zh/index.js';
-import enLocale from './en/index.js';
-import { getLast } from '../../src/utils.js';
+import zhLocale from './zh';
+import enLocale from './en';
+import { getLast } from '../../src/utils';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -33,6 +33,6 @@ i18n.use(initReactI18next).init({
 });
 
 /**
- * @deprecated 请使用类型加强后的 src/utils/i18n 示例
+ * @notice 请使用类型加强后的 src/utils/i18n 示例
  */
 export default i18n;
