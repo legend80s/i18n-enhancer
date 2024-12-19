@@ -2,7 +2,7 @@
 
 > Make i18n 🌍 joyful 🤗 as it deserved to be!
 
-An npm package based on react-i18next and i18next, enhances the functionality of `useTranslate` by providing more precise types, allowing it to prompt keys and interpolation variable names within translated text, among other enhancements.
+An npm package **enhances** `react-i18next` and `i18next`, enhances the functionality of `useTranslate` by providing precise types, thus **hinting keys and interpolation variable names** within translated text, among other enhancements.
 
 ## Installation
 
