@@ -1,4 +1,4 @@
-import { i18n } from '../../src/react-i18next/utils/i18n';
+import { i18n } from '../../src/react-i18next/helper/i18n';
 
 type ITranslationsEn = typeof import('./en').default;
 

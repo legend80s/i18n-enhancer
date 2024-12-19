@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { useT } from '../../src/react-i18next/utils/i18n';
-import { render, screen } from '@testing-library/react';
+import { useT } from '../../src/react-i18next/helper/i18n';
+import { render } from '@testing-library/react';
 
 // const confirm = i18n.t('common.action.确认');
 
