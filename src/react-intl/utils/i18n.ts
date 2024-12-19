@@ -11,7 +11,7 @@ import {
   type MessageDescriptor,
 } from 'react-intl';
 import type { ISupportedLocale } from '../ConfigProvider';
-import { getLast, type Fields } from '/src/utils';
+import { getLast, type FieldsSingleBrace } from '/src/utils';
 
 const DEFAULT_LOCALE = 'zh-CN';
 const label = '@neural/ui';
@@ -150,7 +150,7 @@ export function useTranslator(locale?: ISupportedLocale) {
 export function createTranslator(locale: ISupportedLocale = 'zh-CN') {
   const intl = generateIntl(locale);
 
-  type IValues<T extends string> = Fields<T> &
+  type IValues<T extends string> = FieldsSingleBrace<T> &
     Parameters<IntlShape['formatMessage']>[1];
 
   return function translate<ID extends IKeys>(

@@ -1,8 +1,9 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import zhLocale from './zh-CN';
-import enLocale from './en-US';
-import { getLast } from '/src/utils';
+
+import zhLocale from './zh/index.js';
+import enLocale from './en/index.js';
+import { getLast } from '../../src/utils.js';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -13,7 +14,7 @@ i18n.use(initReactI18next).init({
       translation: zhLocale,
     },
   },
-  lng: localStorage.getItem('lang') || 'zh', // if you're using a language detector, do not define the lng option
+  lng: 'zh', // if you're using a language detector, do not define the lng option
   fallbackLng: 'zh',
 
   interpolation: {

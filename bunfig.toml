@@ -1,0 +1,5 @@
+[test]
+preload = ["./happydom.ts"]
+# preload = ["./happydom.ts", "./tests/setup.mjs"]
+coverageSkipTestFiles = true       # default false
+coverageThreshold = { branches = 0.36, lines = 0.18, functions = 0.26 }

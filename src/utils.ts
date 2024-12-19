@@ -41,18 +41,36 @@ type Trim<T extends string> = TrimStart<TrimEnd<T>>;
  * type foo = Fields<'hello {{foo}} {{bar}}'>
  * // foo is `interface { hello: string; bar: string }`
  */
-export type Fields<T extends string> = ArrToInterface<ExtractKeys<T>>;
+export type FieldsDoubleBraces<T extends string> = ArrToInterface<
+  ExtractKeysDoubleBraces<T>
+>;
+
+export type FieldsSingleBrace<T extends string> = ArrToInterface<
+  ExtractKeysSingleBrace<T>
+>;
 
 /**
  * @example
  * type foo = ExtractKeys<'hello {{foo}} {{bar}}'>
  * // foo is `["foo", "bar"]`
  */
-type ExtractKeys<
+type ExtractKeysDoubleBraces<
+  T extends string,
+  Keys extends any[] = []
+> = T extends `${string}{{${infer K}}}${infer Rest}`
+  ? ExtractKeysDoubleBraces<Rest, [...Keys, Trim<K>]>
+  : Keys;
+
+/**
+ * @example
+ * type foo = ExtractKeys<'hello {{foo}} {{bar}}'>
+ * // foo is `["foo", "bar"]`
+ */
+type ExtractKeysSingleBrace<
   T extends string,
   Keys extends any[] = []
 > = T extends `${string}{${infer K}}${infer Rest}`
-  ? ExtractKeys<Rest, [...Keys, Trim<K>]>
+  ? ExtractKeysSingleBrace<Rest, [...Keys, Trim<K>]>
   : Keys;
 
 /**
@@ -60,4 +78,4 @@ type ExtractKeys<
  * type foo = ArrToInterface<["foo", "bar"]>
  * // foo is `{"foo": string, "bar": string}`
  */
-type ArrToInterface<A extends string[]> = { [P in A[number]]: string };
+type ArrToInterface<A extends string[]> = { [P in A[number]]: number | string };

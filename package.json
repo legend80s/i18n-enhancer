@@ -4,9 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test:react-i18next": "tsc test/locales/i18n.test.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@happy-dom/global-registrator": "^15.11.7",
+    "@testing-library/react": "^16.1.0",
+    "@types/jest": "^29.5.14",
+    "@types/react": "^19.0.2",
+    "i18next": "^24.1.2",
+    "react": "^19.0.0",
+    "react-i18next": "^15.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "@types/react": "^19.0.2",
+    "i18next": "^24.1.2",
+    "react": "^19.0.0",
+    "react-i18next": "^15.2.0"
+  }
 }
