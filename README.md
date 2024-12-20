@@ -102,9 +102,7 @@ const enhancer = enhance<ITranslationsEn>(useTranslation);
 
 > Import translation packages for languages you don't frequently develop in.
 >
->For example, if your app targets Chinese users, import English translations.
->
-> Benefits: Type inference will help you detect keys without English translations.
+>For example, if your app targets Chinese users, import English translations thus type inference will help you detect keys without English translations.
 >
 >Additionally, if you use Chinese as keys, there's no need to provide Chinese translations because we've set up `parseMissingKeyHandler` to use the last part of the key as a fallback translation when the key is missing.
 </details>
