@@ -1,34 +1,65 @@
 <h1 align="center">🌍 i18n-enhancer</h1>
 
-英文 | [中文](https://github.com/legend80s/i18ndash/blob/master/README-zh-CN.md)
+英文 | [中文](https://github.com/legend80s/i18n-enhancer/blob/master/README-zh-CN.md)
 
 > **Translation as type**, making i18n development **type safer**, more efficient, and with less code!
 >
 > Make your i18n DX journey as type safe 🛡️ and joyful 🥳 as it's meant to be!
 
+## Features ✨
+
 A `react-i18next` and `i18next` **enhancer**.
 
 It enhances `useTranslate` by providing **precise types**, thus make **keys** and **interpolation variables** hinting possible in your IDE, among other enhancements.
 
-## Features ✨
-
-- **Type-safe**: `useTranslate` returns a type-safe function.
-- **Key hinting**: `useTranslate` returns a function that hints the keys.
-- **Interpolation variables hinting**: `useTranslate` returns a function that hints the interpolation variables.
-- **Key validation**: `useTranslate` returns a function that validates the keys.
-- **Interpolation variables validation**: `useTranslate` returns a function that validates the interpolation variables.
-- **Key auto-completion**: `useTranslate` returns a function that auto-completes the keys.
-- Nothing added in runtime, just type enhancement, thus no extra bundle size.
+- **Translation as type**：No additional type declaration required; simply provide the translation text to obtain an accurate type.
+- **No runtime cost**：No runtime rewrite.
+- **No extra bundle size**: Nothing added in runtime, just type enhancement, thus no extra bundle size.
 
 ## Installation 📦
 
 ```bash
 npm install react-i18next i18next --save
 
-npm install react-i18next-enhancer --save
+npm install i18n-enhancer --save
 ```
 
 ## Usage 📝
+
+in Component:
+
+```diff typescript
+import { useTranslation } from 'react-i18next';
++ import { enhance } from 'i18n-enhancer/react-i18next';
++ type ITranslationsEn = typeof import('./en').default;
+
++ const { useT } = enhance<ITranslationsEn>(useTranslation)
+
+const Hello = () => {
+- const { t } = useTranslation(...);
++ const { t } = useT(...);
+
+  return <p>{t('hi')}</p>;
+}
+```
+
+not in Component:
+
+```diff typescript
+import i18n from '@/src/locales/i18n';
++ import { enhanceI18n } from 'i18n-enhancer/react-i18next';
++ type ITranslationsEn = typeof import('./en').default;
+
++ const { t } = enhanceI18n<ITranslationsEn>(i18n)
+
+function sayHello = () => {
+- const { t } = i18n.t;
+
+  return <p>{t('hi')}</p>;
+}
+```
+
+## Example
 
 ### For `react-i18next`
 
