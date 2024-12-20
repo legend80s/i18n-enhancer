@@ -1,10 +1,10 @@
-<h1 align="center">i18n-enhancer</h1>
+<h1 align="center">🌍 i18n-enhancer</h1>
 
-> Make internationalization 🌍 as joyful 🤗 as it's meant to be!
+> Make internationalization as **type safe 🛡️** and **DX joyful 🥳** as it's meant to be!
 
 An npm package **enhances** `react-i18next` and `i18next`.
 
-It enhances the function of `useTranslate` by providing precise types, thus make **keys and interpolation variable names** hinting possible in your IDE, among other enhancements.
+It enhances the function of `useTranslate` by providing **precise types**, thus make **keys** and **interpolation variable names** hinting possible in your IDE, among other enhancements.
 
 ## Installation 📦
 
