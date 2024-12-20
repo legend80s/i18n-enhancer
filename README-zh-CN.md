@@ -1,5 +1,7 @@
 <h1 align="center">🌍 i18n-enhancer</h1>
 
+[英文](https://github.com/legend80s/i18ndash/blob/master/README.md) | 中文
+
 > 🛡️ 翻译即类型，让国际化开发更安全、更高效、代码更少！
 >
 > Make internationalization as **type safe 🛡️** and **DX joyful 🥳** as it's meant to be!

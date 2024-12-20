@@ -1,5 +1,7 @@
 <h1 align="center">🌍 i18n-enhancer</h1>
 
+英文 | [中文](https://github.com/legend80s/i18ndash/blob/master/README-zh-CN.md)
+
 > **Translation as type**, making i18n development **type safer**, more efficient, and with less code!
 >
 > Make your i18n DX journey as type safe 🛡️ and joyful 🥳 as it's meant to be!
