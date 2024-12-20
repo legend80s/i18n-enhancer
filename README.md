@@ -118,6 +118,7 @@ const { useT } = enhancer;
 const Shopping: React.FC = () => {
   const { t, /*i18n*/ } = useT<ITranslationsEn>();
 
+  // i18n is the raw i18next instance. You can use it to change language.
   // i18n.changeLanguage('en');
 
   return (<main>
