@@ -137,8 +137,6 @@ We use `useT` from `i18n-enhancer` instead of `useTranslation` from `react-i18ne
 + const { t } = useT<ITranslationsEn>();
 ```
 
-假如我们的翻译文本如下：
-
 Suppose our translation text is as follows:
 
 ```typescript
@@ -159,13 +157,9 @@ Suppose our translation text is as follows:
 } as const
 ```
 
-当你输入 `t('shopping.` 你会看到所有翻译的 key 都会提示出来。
-
 When you type `t('shopping.` all translation keys will be prompted.
 
 ![image](todo)
-
-并且如果你的光标悬浮到 `t` 函数上，你会看到如下提示：
 
 If you hover over the `t` function, you will see the following prompts:
 
@@ -208,43 +202,9 @@ for Chinese:
 </main>
 ```
 
-## 限制
-
-### 1. 翻译不支持嵌套的键
-
-比如：
-
-```typescript
-{
-  shopping: {
-    checkout: 'Checkout',
-  }
-}
-```
-
-也不打算支持，因为我们认为平铺的 `key` 更容易查找，因为定义和使用一样，可读性也更好。
-
-### 2. 插值无法通过翻译确定是否必选
-
-比如：
-
-```typescript
-{
-  'shopping.checkout': 'Checkout {{total}}',
-}
-```
-
-```typescript
-// 不会提示类型错误
-t('shopping.checkout')
-
-// 只有传入不存在的参数，或参数不够才会提示类型错误
-t('shopping.checkout', { notExist: 100 })
-```
-
 ## Constraints
 
-### 1. Translations do not support nested keys
+### 1. Nested key not supported
 
 For example:
 
@@ -256,22 +216,24 @@ For example:
 }
 ```
 
-We do not plan to support it because we believe flat `key` is easier to find because the definition and usage are the same, and the readability is also better.
+We don't plan to support it, as we believe that flat `keys` are easier to find because they are defined and used in the same way, making them more readable.
 
-### 2. Interpolation cannot determine whether the parameter is required through translation
+### 2. Interpolation values cannot be determined as required params by inspecting translation text
+
+> TypeScript is incapable in this case.
 
 For example:
 
 ```typescript
 {
-  'shopping.checkout': 'Checkout {{total}}',
+  'shopping.checkout': 'Checkout {{ total }}',
 }
 ```
 
 ```typescript
-// No type error will be prompted
+// no type error
 t('shopping.checkout')
 
-// Only when the parameter does not exist or the parameter is not enough will the type error be prompted
+// only when invalid parameters are passed or insufficient parameters are provided.
 t('shopping.checkout', { notExist: 100 })
 ```
