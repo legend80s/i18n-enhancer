@@ -13,7 +13,7 @@ export function enhance<T>(useTranslation: IReactI18N['useTranslation']) {
     /**
      * type enhanced `useTranslation` hook.
      */
-    useT: () => useT<T>(useTranslation),
+    useT: (...args: IUseTranslationParams) => useT<T>(useTranslation, ...args),
   };
 }
 
@@ -35,7 +35,8 @@ function _enhanceAll<TT>({ reactI18N, i18n: initializedI18n }: IParams) {
     /**
      * type enhanced `useTranslation` hook.
      */
-    useT: () => useT<TT>(reactI18N.useTranslation),
+    useT: (...args: IUseTranslationParams) =>
+      useT<TT>(reactI18N.useTranslation, ...args),
 
     /**
      * type enhanced `i18n` instance and with `resolvedLanguage` exposed and `isEnglish` added
@@ -62,16 +63,20 @@ function _enhanceAll<TT>({ reactI18N, i18n: initializedI18n }: IParams) {
 }
 
 type IUseTranslationFunction = typeof import('react-i18next')['useTranslation'];
+type IUseTranslationParams = Parameters<IUseTranslationFunction>;
 
 /**
  * A wrapper for `useTranslation` from react-i18next, adding **precise type** to both **input and return params** so to prompt all keys and prevent key misspelling.
  *
  * 基于 react-i18next `useTranslation` 的封装，功能没有变化，做了强类型提示：能自动提示 id，避免 id 写错。
  */
-function useT<ITranslations>(useTranslation: IUseTranslationFunction) {
+function useT<ITranslations>(
+  useTranslation: IUseTranslationFunction,
+  ...args: IUseTranslationParams
+) {
   type ITranslationKeys = keyof ITranslations;
 
-  const { t, i18n, ...rest } = useTranslation();
+  const { t, i18n, ...rest } = useTranslation(...args);
   type ISecondParamOfT = Parameters<typeof t>[1];
   type IValues<T extends string> = FieldsDoubleBraces<T> & ISecondParamOfT;
 
