@@ -11,7 +11,7 @@ const { useT } = enhance({
 
 type ITranslationsEn = typeof import('./en').default;
 
-describe('i18n', () => {
+describe('i18n in React component zh-CN', () => {
   it('should return the correct zh translation', () => {
     const ShoppingCart: React.FC = () => {
       const { t, i18n } = useT<ITranslationsEn>();

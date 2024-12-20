@@ -1,12 +1,12 @@
 <h1 align="center">🌍 i18n-enhancer</h1>
 
-> 🛡️ TRANSLATION AS TYPE, making i18n development type safer, more efficient, and with less code!
+> **Translation as type**, making i18n development **type safer**, more efficient, and with less code!
 >
-> Make internationalization as **type safe 🛡️** and **DX joyful 🥳** as it's meant to be!
+> Make your i18n DX journey as type safe 🛡️ and joyful 🥳 as it's meant to be!
 
-An npm package **enhances** `react-i18next` and `i18next`.
+A `react-i18next` and `i18next` **enhancer**.
 
-It enhances the function of `useTranslate` by providing **precise types**, thus make **keys** and **interpolation variable names** hinting possible in your IDE, among other enhancements.
+It enhances `useTranslate` by providing **precise types**, thus make **keys** and **interpolation variables** hinting possible in your IDE, among other enhancements.
 
 ## Installation 📦
 

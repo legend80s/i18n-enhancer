@@ -16,7 +16,7 @@ const { useT } = enhance({
   i18n: initializedI18N,
 });
 
-describe('i18n', () => {
+describe('i18n in React component en', () => {
   it('should return the correct en translation', () => {
     const ShoppingCart: React.FC = () => {
       const { t, i18n } = useT<ITranslationsEn>();
