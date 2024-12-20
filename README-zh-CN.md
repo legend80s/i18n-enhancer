@@ -133,8 +133,7 @@ const Shopping: React.FC = () => {
 ```
 
 当你输入 `t('shopping.` 你会看到所有翻译的 key 都会提示出来。
-
-![image](todo)
+![image](https://github.com/user-attachments/assets/15fac1df-7e83-40e0-abc5-f20050c799ff)
 
 并且如果你的光标悬浮到 `t` 函数上，你会看到如下提示：
 
