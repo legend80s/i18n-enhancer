@@ -63,7 +63,7 @@ function sayHello = () => {
 
 #### 1. initialize `react-i18next`
 
-Add `parseMissingKeyHandler` to reduce redundant translations.
+[Optional] Add `parseMissingKeyHandler` to reduce redundant translations.
 
 ```diff typescript
 // src/locales/i18n.ts
@@ -100,13 +100,13 @@ const enhancer = enhance<ITranslationsEn>(useTranslation);
 <details>
 <summary>Why import English Translations only</summary>
 
-Import translation packages for languages you don't frequently develop in.
-
-For example, if your app targets Chinese users, import English translations.
-
-Benefits: Type inference will help you detect keys without English translations.
-
-Additionally, if you use Chinese as keys, there's no need to provide Chinese translations because we've set up `parseMissingKeyHandler` to use the last part of the key as a fallback translation when the key is missing.
+> Import translation packages for languages you don't frequently develop in.
+>
+>For example, if your app targets Chinese users, import English translations.
+>
+> Benefits: Type inference will help you detect keys without English translations.
+>
+>Additionally, if you use Chinese as keys, there's no need to provide Chinese translations because we've set up `parseMissingKeyHandler` to use the last part of the key as a fallback translation when the key is missing.
 </details>
 
 ### 3. Use `useT` instead of `useTranslation` in your components
