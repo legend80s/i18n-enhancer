@@ -159,8 +159,6 @@ Suppose our translation text is as follows:
 
 When you type `t('shopping.` all translation keys will be prompted.
 
-![image](todo)
-
 If you hover over the `t` function, you will see the following prompts:
 
 ```typescript
