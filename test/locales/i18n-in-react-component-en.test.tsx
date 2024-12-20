@@ -1,9 +1,9 @@
 import React from 'react';
-import * as reactI18N from 'react-i18next';
-import initializedI18N from './i18n';
+import './i18n';
+import { useTranslation } from 'react-i18next';
+import { render } from '@testing-library/react';
 
 import { enhance } from '../../src/react-i18next';
-import { render } from '@testing-library/react';
 
 // 只需要import英文即可，反而可以检测出没有翻译的 key
 // 其次中文一般无需翻译，因为可以直接 key 中的中文
@@ -11,15 +11,12 @@ import { render } from '@testing-library/react';
 // Just import English, and it can detect untranslated keys; Chinese generally doesn't need to be translated since it can be directly used from the keys in Chinese. Thus, only import English here.
 type ITranslationsEn = typeof import('./en').default;
 
-const { useT } = enhance({
-  reactI18N,
-  i18n: initializedI18N,
-});
+const { useT } = enhance<ITranslationsEn>(useTranslation);
 
 describe('i18n in React component en', () => {
   it('should return the correct en translation', () => {
     const ShoppingCart: React.FC = () => {
-      const { t, i18n } = useT<ITranslationsEn>();
+      const { t, i18n } = useT();
 
       i18n.changeLanguage('en');
 

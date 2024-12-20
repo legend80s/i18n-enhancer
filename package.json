@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:react-i18next": "tsc test/locales/i18n.test.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "// test:react-i18next": "单实例故需要串行测试 Single instance requires serial testing.",
+    "test:react-i18next:node": "bun test test/locales/i18n-in-node.test.ts",
+    "test:react-i18next:en": "bun test test/locales/i18n-in-react-component-en.test.tsx",
+    "test:react-i18next:zh": "bun test test/locales/i18n-in-react-component.test.tsx",
+    "test:react-i18next": "bun test:react-i18next:node && bun test:react-i18next:en && bun test:react-i18next:zh",
+    "test": "bun test:react-i18next"
   },
   "type": "module",
   "keywords": [],

@@ -1,20 +1,18 @@
 import React from 'react';
-import * as reactI18N from 'react-i18next';
+import './i18n';
+import { useTranslation } from 'react-i18next';
 import { render } from '@testing-library/react';
-import { enhance } from '../../src/react-i18next';
-import i18n from './i18n';
 
-const { useT } = enhance({
-  i18n,
-  reactI18N,
-});
+import { enhance } from '../../src/react-i18next';
 
 type ITranslationsEn = typeof import('./en').default;
+
+const { useT } = enhance<ITranslationsEn>(useTranslation);
 
 describe('i18n in React component zh-CN', () => {
   it('should return the correct zh translation', () => {
     const ShoppingCart: React.FC = () => {
-      const { t, i18n } = useT<ITranslationsEn>();
+      const { t, i18n } = useT();
 
       expect(i18n.resolvedLanguage).toBe('zh');
       expect(i18n.languages).toEqual(['zh']);
