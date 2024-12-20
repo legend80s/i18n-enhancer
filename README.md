@@ -8,9 +8,7 @@
 
 ## Features ✨
 
-A `react-i18next` and `i18next` **enhancer**.
-
-It enhances `useTranslate` by providing **precise types**, thus make **keys** and **interpolation variables** hinting possible in your IDE, among other enhancements.
+A `react-i18next` and `i18next` **enhancer** which enhances `useTranslate` by providing **precise types**, thus make **keys** and **interpolation variables** hinting possible in your IDE, among other enhancements.
 
 - **Translation as type**：No additional type declaration required; simply provide the translation text to obtain an accurate type.
 - **No runtime cost**：No runtime rewrite.
@@ -43,7 +41,7 @@ const Hello = () => {
 }
 ```
 
-not in Component:
+out of Component:
 
 ```diff typescript
 import i18n from '@/src/locales/i18n';

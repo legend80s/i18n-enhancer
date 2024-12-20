@@ -43,7 +43,7 @@ const Hello = () => {
 }
 ```
 
-not in Component:
+out of Component:
 
 ```diff typescript
 import i18n from '@/src/locales/i18n';
