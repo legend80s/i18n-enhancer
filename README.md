@@ -89,22 +89,25 @@ export default i18n;
 
 ```typescript
 import React from 'react';
-import * as reactI18N from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { enhance } from 'i18n-enhancer/react-i18next';
 
-import initializedI18N from '@/locales/i18n';
-
-// Import translation packages for languages you don't frequently develop in.
-// For example, if your app targets Chinese users, import English translations. 
-// Benefits: Type inference will help you detect keys without English translations. 
-// Additionally, if you use Chinese as keys, there's no need to provide Chinese translations because we've set up `parseMissingKeyHandler` to use the last part of the key as a fallback translation when the key is missing.
 type ITranslationsEn = typeof import('./en').default;
 
-const enhancer = enhance({
-  reactI18N,
-  i18n: initializedI18N,
-});
+const enhancer = enhance<ITranslationsEn>(useTranslation);
 ```
+
+<details>
+<summary>Why import English Translations only</summary>
+
+Import translation packages for languages you don't frequently develop in.
+
+For example, if your app targets Chinese users, import English translations.
+
+Benefits: Type inference will help you detect keys without English translations.
+
+Additionally, if you use Chinese as keys, there's no need to provide Chinese translations because we've set up `parseMissingKeyHandler` to use the last part of the key as a fallback translation when the key is missing.
+</details>
 
 ### 3. Use `useT` instead of `useTranslation` in your components
 
