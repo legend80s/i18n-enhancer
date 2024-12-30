@@ -51,10 +51,11 @@ const enhancer = enhance<ITranslationsEn>(useTranslation);
 > It use your translated key as the params type and translated value as return type.
 
 ```typescript
+const enhancer = enhance<ITranslationsEn>(useTranslation);
 const { useT } = enhancer;
 
 const Shopping: React.FC = () => {
-  const { t, /*i18n*/ } = useT<ITranslationsEn>();
+  const { t, /*i18n*/ } = useT();
 
   // i18n is the raw i18next instance. You can use it to change language.
   // i18n.changeLanguage('en');
@@ -73,7 +74,7 @@ We use `useT` from `i18n-enhancer` instead of `useTranslation` from `react-i18ne
 
 ```diff
 - const { t } = useTranslation();
-+ const { t } = useT<ITranslationsEn>();
++ const { t } = useT();
 ```
 
 Suppose our translation text is as follows:

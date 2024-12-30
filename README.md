@@ -2,12 +2,12 @@
 
 英文 | [中文](https://github.com/legend80s/i18n-enhancer/blob/master/README-zh-CN.md)
 
-> **Translation as type**, making i18n development **type safer**, more efficient, and with less code!
-> Make your i18n DX journey as type safe 🛡️ and joyful 🥳 as it's meant to be!
+> **Translation as type**, making i18n development **type safer 👮‍♂️**, more **efficient 🚀**, but with **less code**!
+> Make your i18n DX journey as joyful 🥳 as it's meant to be!
 
 ## Features ✨
 
-A `react-i18next` and `i18next` **enhancer** which enhances `useTranslate` by providing **precise types**, thus make **keys** and **interpolation variables** hinting possible in your IDE, among other enhancements.
+A `react-i18next` and `react-intl` enhancer which enhances `useTranslate` by providing **precise types**, thus make **keys** and **interpolation variables** hinting possible in your IDE, among other enhancements.
 
 - **Translation as type**：No additional type declaration required; simply provide the translation text to obtain an accurate type.
 - **No runtime cost**：No runtime rewrite.
@@ -19,7 +19,9 @@ A `react-i18next` and `i18next` **enhancer** which enhances `useTranslate` by pr
 npm install i18n-enhancer --save
 ```
 
-## Usage for `react-i18next` 📝
+## Usage 📝
+
+### react-i18next
 
 ```bash
 npm install react-i18next i18next --save
@@ -60,6 +62,10 @@ function sayHello = () => {
 ```
 
 </details>
+
+### react-intl
+
+todo...
 
 ## Example
 
