@@ -1,17 +1,17 @@
 <h1 align="center">🌍 i18n-enhancer</h1>
 
-英文 | [中文](https://github.com/legend80s/i18n-enhancer/blob/master/README-zh-CN.md)
+English | [中文](https://github.com/legend80s/i18n-enhancer/blob/master/README-zh-CN.md)
 
 > **Translation as type**, making i18n development **type safer 👮‍♂️**, more **efficient 🚀**, but with **less code**!
-> Make your i18n DX journey as joyful 🥳 as it's meant to be!
+> Make your i18n DX journey as **joyful** 🥳 as it's meant to be!
 
 ## Features ✨
 
 A `react-i18next` and `react-intl` enhancer which enhances `useTranslate` by providing **precise types**, thus make **keys** and **interpolation variables** hinting possible in your IDE, among other enhancements.
 
-- **Translation as type**：No additional type declaration required; simply provide the translation text to obtain an accurate type.
-- **No runtime cost**：No runtime rewrite.
-- **No extra bundle size**: Nothing added in runtime, just type enhancement, thus no extra bundle size.
+- **Translation as type 🤩**：Infer accurate type from translation text Wow!
+- **No runtime cost 💰**：No runtime rewrite.
+- **No extra bundle size 🎈**: Just type added, thus no extra bundle size.
 
 ## Installation 📦
 
@@ -43,9 +43,7 @@ const Hello = () => {
 ```
 
 <details>
-<summary>Use in normal function</summary>
-
-### Use in normal function
+<summary><h4>Use in normal function</h4></summary>
 
 ```diff typescript
 import i18n from '@/src/locales/i18n';
@@ -67,11 +65,14 @@ function sayHello = () => {
 
 todo...
 
-## Example
+## Examples
 
 [react-i18next](https://github.com/legend80s/i18n-enhancer/blob/master/example-react-i18next.md) | [react-intl](https://github.com/legend80s/i18n-enhancer/blob/master/example-react-intl.md)
 
-## Constraints
+
+<details>
+<summary><h2>Constraints</h2></summary>
+
 
 ### 1. Nested key not supported
 
@@ -89,9 +90,7 @@ We don't plan to support it, as we believe that flat `keys` are easier to find b
 
 ### 2. Interpolation values is always optional
 
-The values cannot be determined as required params by inspecting translation text
-
-because TypeScript's constraints.
+The values cannot be determined as required params by inspecting translation text because of TypeScript's constraints.
 
 For example:
 
@@ -101,10 +100,15 @@ For example:
 }
 ```
 
+no type error:
 ```typescript
-// no type error
 t('shopping.checkout')
+```
 
-// only when invalid parameters are passed or insufficient parameters are provided.
+only when invalid parameters are passed or insufficient parameters are provided:
+
+```ts
+// ❌
 t('shopping.checkout', { notExist: 100 })
 ```
+</details>
